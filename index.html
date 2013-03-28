@@ -144,8 +144,8 @@
 
                 <section>
                     <h3>Federal spending</h3>
-                    <!-- <iframe width="100%" height="100%" src="http://fms.csvsoundsystem.com" frameborder="0" allowfullscreen></iframe> -->
-                    <iframe width="960px" height="100%" src="file:///home/tlevine/Documents/fms-symphony/index.html" frameborder="0" allowfullscreen></iframe>
+                    <!-- <iframe width="100%" height="100%" src="http://fms.csvsoundsystem.com" frameborder="0" allowfullscreen></iframe>
+                    <iframe width="960px" height="100%" src="file:///home/tlevine/Documents/fms-symphony/index.html" frameborder="0" allowfullscreen></iframe> -->
                     <a href="http://fms.csvsoundsystem.com"><img src="fms.png" alt="FMS Symphony" /></a>
 				</section>
 
@@ -174,7 +174,7 @@ main.plots <- function() {
     }
 }
 </pre></code>
-                    <p>Now we'll walk through the code.</p>
+                    <p>Now we'll walk through the code, glossing over the sections that are less specific to music videos.</p>
 				</section>
 
 				<section>
@@ -435,14 +435,30 @@ frame(30)
 				</section>
 
 				<section>
-                    <h5>Plot one frame: interesting bits</h5>
+                <h5><code>type="n"</code></h5>
                     <pre><code>
+    plot(
+        table2.toplot[1:i,'balance'] ~ table2.toplot[1:i,'date'],
+        type = 'n',
+        xlim = range(table2.toplot$date),
+        ylim = c(-2e5, 7e5), #range(table2.toplot$balance),
+        xlab = '', #Date
+        ylab = 'Cash in the bank (billions)', main = '', #'FMS Soundsystem',
+        axes = F, col = 4 # so we notice errors
+    )
 </code></pre>
 				</section>
 
 				<section>
-                    <h5>Plot one frame: interesting bits</h5>
+                    <h5>Confidence interval with <code>polygon</code></h5>
                     <pre><code>
+    # Balance
+    polygon(
+        c(table2.toplot[1:i,'date'], table2.toplot[i:1,'date']),
+        c(table2.toplot[1:i,'balance'], table2.toplot[i:1,'balance']) + c(table2.toplot[1:i,'error'], - table2.toplot[i:1,'error']),
+        col = 1
+    )
+
 </code></pre>
 				</section>
 
