@@ -50,6 +50,7 @@
 
 				<section>
                     <h2>Big Data</h2>
+                    Image goes here
 				</section>
 
 				<section>
@@ -164,7 +165,7 @@
 
 				<section>
                     <h4>Video</h4>
-                    <img src="annotated-screenshot.png" alt="Annotated screenshot of the video" />
+                    <img src="screenshot.png" alt="Screenshot of the video" />
                 </section>
 
 				<section>
@@ -188,7 +189,6 @@ main.plots <- function() {
 
 				<section>
                     <h5>Libraries</h5>
-                    <p>Libraries</p>
                     <pre><code>
 library(plyr)
 library(aplpack) # Cheroff faces
@@ -197,8 +197,7 @@ library(reshape2)
 				</section>
 
 				<section>
-                    <h5>Video</h5>
-                    <p>Munge</p>
+                    <h5>Munge</h5>
                     <pre><code>
 # Load the data
 if (!'table2.raw' %in% ls()) {
@@ -227,7 +226,7 @@ table2.pca <- ddply(table2, c('type', 'item'), function(df) {
 				</section>
 
 				<section>
-                    <h5>Video</h5>
+                    <h5>Turn 56 variables into 15 variables.</h5>
                     <pre><code>
 # Run PCA
 items <- dcast(table2.pca, date ~ type + item, value.var = 'today')[-1]
@@ -241,8 +240,8 @@ factored <- t(scale(items, center = pca$center, scale = pca$scale) %*% pca$loadi
 				</section>
 
 				<section>
-                    <h5>Video</h5>
-                    <p>Generate all 1877 faces. This takes some time.</p>
+                    <h5>Generate all 1877 faces.</h5>
+                    <p>This takes some time.</p>
                     <pre><code>
 # Make faces
 f.all <- faces(t(factored)[,1:15], plot = F, print.info = F)
@@ -444,6 +443,11 @@ frame(30)
 				</section>
 
 				<section>
+                    <h5>Frame components</h5>
+                    <img src="annotated-screenshot.png" alt="Annotated screenshot of the video" />
+                </section>
+
+				<section>
                 <h5><code>type="n"</code></h5>
                     <pre><code>
     plot(
@@ -483,6 +487,11 @@ frame(30)
     axis(4, at = 0:5, labels = paste(0:5, '%', sep = ''), lty = 2)
 </code></pre>
 				</section>
+
+				<section>
+                    <h5>Frame components again</h5>
+                    <img src="annotated-screenshot.png" alt="Annotated screenshot of the video" />
+                </section>
 
 				<section>
                     <h5>Plot one frame: interesting bits</h5>
