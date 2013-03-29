@@ -1,0 +1,3 @@
+```{r christmas1}
+plot(rnorm(100))
+```
