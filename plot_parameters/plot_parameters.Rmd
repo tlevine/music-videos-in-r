@@ -1,37 +1,43 @@
+Some constants
 ```{r christmas.constants}
 height.vid <- 9/16
 width.vid  <- 16/9
+```
 
+A simple plot
 ```{r christmas.1}
 plot(
-    x=-2+c(1,80),
-    y=-15+c(-15,height.vid*80-15)
+    x=0,
+    y=0
 )
 ```
 
+Set the limits.
 ```{r christmas.2}
 plot(
-    x=-2+c(1,80),
-    y=-15+c(-15,height.vid*80-15),
+    x=0,
+    y=0,
     xlim=-2+c(1,80),
     ylim=-15+c(-15,height.vid*80-15)
 )
 ```
 
+Set the aspect ratio.
 ```{r christmas.3}
 plot(
-    x=-2+c(1,80),
-    y=-15+c(-15,height.vid*80-15),
+    x=0,
+    y=0,
     xlim=-2+c(1,80),
     ylim=-15+c(-15,height.vid*80-15),
     asp=1
 )
 ```
 
+Remove the labels.
 ```{r christmas.4}
 plot(
-    x=-2+c(1,80),
-    y=-15+c(-15,height.vid*80-15),
+    x=0,
+    y=0,
     xlim=-2+c(1,80),
     ylim=-15+c(-15,height.vid*80-15),
     asp=1,
@@ -41,10 +47,11 @@ plot(
 )
 ```
 
+Remove the data; this is just our base canvas.
 ```{r christmas.5}
 plot(
-    x=-2+c(1,80),
-    y=-15+c(-15,height.vid*80-15),
+    x=0,
+    y=0,
     xlim=-2+c(1,80),
     ylim=-15+c(-15,height.vid*80-15),
     asp=1,
@@ -55,10 +62,11 @@ plot(
 )
 ```
 
+The version I use in the video
 ```{r christmas.final}
 plot(
-    x=-2+c(1,80),
-    y=-15+c(-15,height.vid*80-15),
+    x=0,
+    y=0,
     xlim=-2+c(1,80),
     ylim=-15+c(-15,height.vid*80-15),
     asp=1,
@@ -70,19 +78,13 @@ plot(
 )
 ```
 
-```{r christmas.with.axes}
-plot(
-    x=-2+c(1,80),
-    y=-15+c(-15,height.vid*80-15),
-    xlim=-2+c(1,80),
-    ylim=-15+c(-15,height.vid*80-15),
-    asp=1,
-    xlab='',
-    ylab='',
-    main='',
-    type='n',
-    axes=F
-)
+A side note: Use `axes=F` and `axis` because it looks better.
+```{r axes}
+plot(iris$Sepal.Length ~ iris$Sepal.Width)
+```
+
+```{r axis}
+plot(iris$Sepal.Length ~ iris$Sepal.Width, axes=F)
 axis(1)
 axis(2)
 ```
