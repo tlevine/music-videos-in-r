@@ -1,3 +1,88 @@
-```{r christmas1}
-plot(rnorm(100))
+```{r christmas.constants}
+height.vid <- 9/16
+width.vid  <- 16/9
+
+```{r christmas.1}
+plot(
+    x=-2+c(1,80),
+    y=-15+c(-15,height.vid*80-15)
+)
+```
+
+```{r christmas.2}
+plot(
+    x=-2+c(1,80),
+    y=-15+c(-15,height.vid*80-15),
+    xlim=-2+c(1,80),
+    ylim=-15+c(-15,height.vid*80-15)
+)
+```
+
+```{r christmas.3}
+plot(
+    x=-2+c(1,80),
+    y=-15+c(-15,height.vid*80-15),
+    xlim=-2+c(1,80),
+    ylim=-15+c(-15,height.vid*80-15),
+    asp=1
+)
+```
+
+```{r christmas.4}
+plot(
+    x=-2+c(1,80),
+    y=-15+c(-15,height.vid*80-15),
+    xlim=-2+c(1,80),
+    ylim=-15+c(-15,height.vid*80-15),
+    asp=1,
+    xlab='',
+    ylab='',
+    main=''
+)
+```
+
+```{r christmas.5}
+plot(
+    x=-2+c(1,80),
+    y=-15+c(-15,height.vid*80-15),
+    xlim=-2+c(1,80),
+    ylim=-15+c(-15,height.vid*80-15),
+    asp=1,
+    xlab='',
+    ylab='',
+    main='',
+    type='n'
+)
+```
+
+```{r christmas.final}
+plot(
+    x=-2+c(1,80),
+    y=-15+c(-15,height.vid*80-15),
+    xlim=-2+c(1,80),
+    ylim=-15+c(-15,height.vid*80-15),
+    asp=1,
+    xlab='',
+    ylab='',
+    main='',
+    type='n',
+    axes=F
+)
+```
+
+```{r christmas.with.axes}
+plot(
+    x=-2+c(1,80),
+    y=-15+c(-15,height.vid*80-15),
+    xlim=-2+c(1,80),
+    ylim=-15+c(-15,height.vid*80-15),
+    asp=1,
+    xlab='',
+    ylab='',
+    main='',
+    type='n',
+    axes=F
+)
+axis(1)
+axis(2)
 ```
