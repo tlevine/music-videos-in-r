@@ -1,0 +1,215 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="author" content="CSV Soundsystem">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                font-family: monospace;
+                font-weight: normal;
+            }
+            #plot {
+                width: 100%;
+            }
+            #canvas {
+                left: 0;
+            }
+            #day, #csv, #sticker, #audio {
+                position: absolute;
+                right: 0;
+            }
+            #audio {
+                top: 0;
+            }
+            #sticker {
+                top: 30px;
+            }
+            #day {
+                text-align: right;
+                top: 140px;
+                background-color: #000;
+                padding: 0.5em;
+            }
+            #csv {
+                text-align: left;
+                bottom: 0;
+                width: 100%;
+                background-color: #222;
+                color: #FFF;
+                padding-bottom: 1em;
+            }
+            #csv * {
+                display: inline;
+            }
+            a, a:visited, a:hover {
+                color: inherit;
+                text-decoration: inherit;
+            }
+            a {
+                text-decoration: underline;
+            }
+            title, h1 {
+                color: inherit;
+                font-size: inherit;
+                font-weight: bold;
+                line-height: inherit;
+            }
+            strong {
+                font-size: 4em;
+                line-height: 0em;
+            }
+            .legend-monday, .monday .fg { color: #00DDDD; }
+            .legend-tuesday, .tuesday .fg { color: #DDDD00; }
+            .legend-wednesday, .wednesday .fg { color: #DD00DD; }
+            .legend-thursday, .thursday .fg { color: #DD0000; }
+            .legend-friday, .friday .fg { color: #00DD00; }
+            .monday { background-color: #FFDDDD; }
+            .tuesday { background-color: #DDFFDD; }
+            .wednesday { background-color: #DDDDFF; }
+            .thursday { background-color: #DDFFFF; }
+            .friday { background-color: #FFFFDD; }
+            .monday .legend-monday { border-bottom: 1px solid #FFDDDD; }
+            .tuesday .legend-tuesday { border-bottom: 1px solid #DDFFDD; }
+            .wednesday .legend-wednesday { border-bottom: 1px solid #DDDDFF; }
+            .thursday .legend-thursday { border-bottom: 1px solid #DDFFFF; }
+            .friday .legend-friday { border-bottom: 1px solid #FFFFDD; }
+        </style>
+    </head>
+    <body>
+        <canvas id="canvas" width=1200" height="600"></canvas>
+        <div id="content">
+            <div id="csv">
+                <!-- This is a CSV -->
+                <title>FMS Symphony</title> <strong>,</strong>by <a rel="author" target="_blank" href="http://csvsoundsystem.com">csv soundsystem</a>
+                <p>
+                    <strong>,</strong>Chords are daily movements (high/major = $$$ in, low/minor = $$$ out)
+                    <strong>,</strong>Flourishes represent movements up and down (respectively) within a two month rolling window that are beyond 2.5 standard deviations from the mean
+                    <strong>,</strong>The left channel is distance to debt ceiling (higher notes = closer to the debt ceiling) and the right channel is interest rate
+                    <strong>,</strong>Chernoff faces mutate according to 15 principal components of 52 different categories of daily reciepts
+                    <strong>,</strong><span class="legend-monday">Monday</span>
+                        <span class="legend-tuesday">Tuesday</span>
+                        <span class="legend-wednesday">Wednesday</span>
+                        <span class="legend-thursday">Thursday</span>
+                        <span class="legend-friday">Friday</span>
+                    <strong>,</strong><a target="_blank" href="http://www.bdatafest.computationalreporting.com/projects/fms-symphony">Read more</a>
+                    <strong>,</strong><a target="_blank" href=",">Plot more</a>
+                    <strong>,</strong><a target="_blank" href="https://github.com/csvsoundsystem/fms-symphony.git">Edit</a>
+                    <strong>,</strong><a target="_blank" href="fms_symphony.mp3">Download</a>
+                </p>
+            </div>
+            <a rel="author" target="_blank" href="http://csvsoundsystem.com">
+                <img id="sticker" src="csvsoundsytem.png" alt="csv soundsystem">
+            </a>
+            <div id="day" class="fg">
+                <h1>FMS Symphony</h1>
+                <a id="fixie" target="_blank"></a>
+            </div>
+            <audio id="audio" controls autoplay style="display: block">
+                <source src="fms_symphony.mp3" type="audio/mp3" />
+            </audio>
+        </div>
+        <script type="text/javascript" src="data_files.js"></script>
+        <script>
+            // Number of images
+            var n = 1877
+
+            // Images variable
+            for (var i = n, images = []; i--;) images.push(null);
+
+            // Buffer on a seek or a page load.
+            var bufferSize = 100
+
+            window.onload = function() {
+                // Swap images
+                var audio = document.getElementById('audio')
+                audio.addEventListener('timeupdate', function() {
+                    // Canvas
+                    var canvas = document.getElementById('canvas')
+                    var context = canvas.getContext('2d')
+
+                    // Audio
+                    var progress = audio.currentTime / audio.duration
+
+                    // Current image
+                    var i = Math.floor(n * progress) + 1
+                    if (i >= n) {
+                        return
+                    }
+
+
+                    // Set the hash.
+                    window.location.hash = '#' + i
+
+                    // If the image has been loaded, draw it.
+                    // Draw nothing if it has not been loaded.
+                    if (images[i]) {
+                        context.drawImage(images[i], 0, 0)
+                    }
+
+                    // Start downloading another image.
+                    for (var j = i; j < i + bufferSize; j++) {
+                        if (j > n) {
+                            break
+                        }
+                        if (images[j] == null) {
+                            images[j] = new Image()
+                            images[j].src = 'slideshow/' + j + '.png'
+                        }
+                    }
+
+                    var fixie = document.getElementById('fixie')
+                    var day = document.getElementById('day')
+
+
+                    // Write the text
+                    fixie.innerHTML = dataFiles['date'][i - 1]
+                    fixie.href = dataFiles['url'][i - 1]
+
+                    // Change the colors
+                    document.body.setAttribute('class', dataFiles['dayOfWeek'][i - 1].toLowerCase())
+
+                    // Clear, starting 10 frames back.
+                    for (var j = 10; j < n; j ++) {
+                        if (i - j < 1) {
+                            // Stop when we hit 1.
+                            break  
+                        }
+                        images[i - j] = null
+                    }
+                }, false)
+                audio.addEventListener('seeked', function() {
+                    var progress = audio.currentTime / audio.duration
+                    var i = Math.floor(n * progress) + 1
+
+                    // Set hash.
+                    var url = [location.protocol, '//', location.host, location.pathname, '#', i].join('')
+
+                    // Track the seek.
+                    if (piwikTracker) {
+                        piwikTracker.trackPageView(url)
+                    }
+                }, false)
+
+                if (window.location.hash.length > 1) {
+                    var specifiedFrame = window.location.hash.replace('#', '') * 1
+                    audio.currentTime = audio.duration * specifiedFrame / n
+                }
+            }
+        </script>
+
+        <!-- Piwik --> 
+        <script type="text/javascript">
+            var pkBaseURL = (("https:" == document.location.protocol) ? "https://piwik.thomaslevine.com/" : "http://piwik.thomaslevine.com/");
+            document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+            </script><script type="text/javascript">
+            try {
+                var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 15);
+                piwikTracker.trackPageView();
+                piwikTracker.enableLinkTracking();
+            } catch( err ) {}
+        </script><noscript><p><img src="http://piwik.thomaslevine.com/piwik.php?idsite=15" style="border:0" alt="" /></p></noscript>
+        <!-- End Piwik Tracking Code -->
+
+    </body>
+</html>
