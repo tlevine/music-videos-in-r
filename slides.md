@@ -7,7 +7,7 @@
 
 
 # Big Data
-Image goes here
+[![For handle big data, solution is very simple: buy bigger monitor and use smaller font in the terminal.](borat.png)](https://twitter.com/mysqlborat/status/306078371182428161)
 
 
 
