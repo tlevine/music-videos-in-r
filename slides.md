@@ -10,6 +10,7 @@
 Image goes here
 
 
+
 # Data music videos are the answer.
 
 
@@ -62,6 +63,7 @@ Image goes here
 <iframe width="560" height="315" src="http://www.youtube.com/embed/JwuEnyV1Cb0" frameborder="0" allowfullscreen></iframe>
 
 
+
 # R is the best language
 ### for data music videos
 <img src="r.jpg" alt="R logo" />
@@ -86,196 +88,55 @@ Sound waves go here.
     $ Species     : Factor w/ 3 levels "setosa","versicolor",..: 1 1 1 1 1 1 1 1 1 1 ...
 
 
+
 # Two case studies
+
 
 
 ## Christmas Gifts
 <iframe width="560" height="315" src="http://www.youtube.com/watch?v=rLZDvXPIDa0" frameborder="0" allowfullscreen></iframe>
 
 
-<h4>Outline</h4>
-<ol>
-    <li>Constants: Labels, dimensions, &amp;c.</li>
-    <li>Base plot with axes but no data</li>
-    <li>Slide-specific drawings</li>
-    <ol>
-        <li><code>rect</code></li>
-        <li><code>text</code></li>
-    </ol>
-    <li>Plot to pdf</li>
-</ol>
-</section>
+### Architecture
+Generate one page per frame.
 
-<section>
-<h4>Constants</h4>
-<pre><code>#Day number labels
-days=1:12
-#Gift number labels
-gifts.num=days
+    pdf('gifts_slideshow.pdf', width=3*16, height=3*9)
 
-#Gift word labels
-gifts.nonum=c(
-'Drummers Drumming',
-'Pipers Piping',
-'Lords-a-Leaping',
-'Ladies Dancing',
-'Maids-a-Milking',
-'Swans-a-Swimming',
-'Geese-a-Laying',
-'Gold Rings',
-'Colly Birds',
-'French Hens',
-'Turtle Doves',
-#'Partridge in a Pear Tree'
-'Partridges in a Pear Tree'
-)
-gifts.nonum=gifts.nonum[length(gifts.nonum):1]
-gifts=paste(1:12,gifts.nonum)
-gifts[1]='A Partridge in a Pear Tree'
+    for (day in 1:12) {
+        #Frame with ordinal before gifts
+        giftframe(0,day=day-1,daylabel=F)
+        giftframe(0,day=day-1,daylabel=T)
+        sapply(day:1,giftframe,day=day)
+    }
+
+    #Final frame with everything
+    giftframe(0,day=12,daylabel=F)
+
+    dev.off()
 
 
-height.vid=9/16
-width.vid=16/9</code></pre>
-</section>
-
-<section>
-<h4>Base plot</h4>
-<pre><code>baseplot=function(){
-#Set up the coordinate system
-plot(type='n',
-x=-2+c(1,80),
-y=-15+c(-15,height.vid*80-15),
-xlim=-2+c(1,80),
-ylim=-15+c(-15,height.vid*80-15),
-asp=1,
-xlab='',
-ylab='',
-main='',
-axes=F,
-)
-}</code></pre>
-</section>
-
-<section data-state="blackout">
-<h4>More about plotting</h4>
-<a href="plot_parameters" target="_blank">Click here</a>
-</section>
-
-<section data-state="blackout">
-<h4>Plot components</h4>
+### Frame composition
 <img src="annotated-christmas-screenshot.png" alt="Annotated screenshot of the Christmas video" />
+
+<section data-state="blackout">
+### Making pretty base R plots
+[(live coding)](live-code-christmas.r)
 </section>
 
-<section>
-<h4>Draw one <code>rect</code></h4>
-<pre><code>daygiftcount.fn=function(day) {
-sum(gifts.num[1:day])
-}
 
-giftrect=function(gift,day=NA,col='grey80') {
-daygiftcount=daygiftcount.fn(day)
-rect(
-#Gifts enter left to right
-xleft  =daygiftcount-sum(gifts.num[0:(gift-1)]),
-ybottom=0-day,
-xright =daygiftcount-sum(gifts.num[1:gift]),
-ytop   =1-day,
-
-col=col,
-border=NA
-)
-}</pre></code>
-</section>
-
-<section>
-<h4>Combine rectangles</h4>
-<pre><code>#Plot all of the gifts until the entered day
-dayrect=function(day) {
-for (pastday in 1:day) {
-sapply(1:pastday,giftrect,day=pastday)
-}
-}</code></pre>
-</section>
-
-<section>
-<h4>Axes</h4>
-<p>If you want axes done right, do them yourself.</p>
-<pre><code>tick=function(x,ybottom=0) {
-lines(
-rep(x,2),
-c(ybottom,ybottom+1),
-lwd=3,
-col='grey80'
-)
-}
-
-giftsperday=function(gift,day,daygiftcount,giftssofar) {
-giftsperday.vector=sapply(1:12,daygiftcount.fn)
-sapply(giftsperday.vector,tick,ybottom=-16)
-lines(
-x=c(0,0),
-y=c(-18,0),
-lwd=3,
-col='grey80'
-)
-text(
-x=giftsperday.vector,
-y=-18,
-labels=giftsperday.vector,
-col='grey80',
-pos=3,cex=6,
-offset=0
-)
-text(
-x=0,
-y=-21,
-labels='Gifts per day',
-col='grey80',
-pos=4,cex=6,
-offset=0
-)
-}</code></pre>
-</section>
-
-<section>
-<h4>Generate one page per frame</h4>
-<pre><code>pdf('gifts_slideshow.pdf',
-width =3*16,
-height=3*9
-)
-
-for (day in 1:12) {
-#Frame with ordinal before gifts
-giftframe(0,day=day-1,daylabel=F)
-giftframe(0,day=day-1,daylabel=T)
-sapply(day:1,giftframe,day=day)
-}
-#Final frame with everything
-giftframe(0,day=12,daylabel=F)
-
-dev.off()</code></pre>
-</section>
-
-<section>
-<h4>Things to remember</h4>
+### Side note
 <!-- I intentionally repeat this slide. -->
-<ul>
-    <li>Base R graphics are powerful.</li>
-    <li><code>locator</code> is helpful.</li>
-    <li><strong>Use ggplot</strong> if you don't need this level of control.</li>
-</ul>
-</section>
+# Use ggplot
 
 
-<section>
-<h3>Federal spending</h3>
+
+## Federal spending
 <!-- <iframe width="100%" height="100%" src="http://fms.csvsoundsystem.com" frameborder="0" allowfullscreen></iframe>
 <iframe width="960px" height="100%" src="file:///home/tlevine/Documents/fms-symphony/index.html" frameborder="0" allowfullscreen></iframe> -->
 <a href="http://fms.csvsoundsystem.com"><img src="screenshot.png" alt="FMS Symphony" /></a>
-</section>
 
-<section>
-<h3>Federal spending</h3>
+
+### Architecture
 <ol>
     <li>Download fixies from the FMS site, and convert them into CSV.</li>
     <li>Load into R, and produce the audio and video tracks.</li>
@@ -285,169 +146,83 @@ dev.off()</code></pre>
     </ol>
     <li>Combine the frames and the song in a website.</li>
 </ol>
-</section>
 
-<section>
-<h4>Video</h4>
+
+### Architecture
+Generate one image per frame.
+
+    for (i in 1:nrow(table2.toplot)) {
+        png(sprintf('slideshow/%d.png', i), width = 1200, height = 600)
+        frame(i)
+        dev.off()
+    }
+
+
+### Frame components
+#### The full video
 <img src="screenshot.png" alt="Screenshot of the video" />
-</section>
 
-<section>
-<h5>The part that we generate in R</h5>
+
+### Frame components
+#### The part that we generate in R
 <img src="file:///home/tlevine/Documents/fms-symphony/slideshow/1028.png" alt="A frame from the video, generated in R" />
+
+
+<section data-state="blackout">
+### Chernoff face hack
+[(live coding)](live-code-fms.rive coding)
 </section>
 
-<section>
-<h5>Overview: The main function</h5>
-<pre><code>
-main.plots <- function() {
-for (i in 1:nrow(table2.toplot)) {
-png(sprintf('slideshow/%d.png', i), width = 1200, height = 600)
-frame(i)
-dev.off()
-}
-}
-</pre></code>
-<p>Now we'll walk through the code, glossing over the sections that are less specific to music videos.</p>
+
+### Side note
+<!-- I intentionally repeat this slide. -->
+# Use ggplot
+
+
+
+## Federal spending
+<!-- <iframe width="100%" height="100%" src="http://fms.csvsoundsystem.com" frameborder="0" allowfullscreen></iframe>
+<iframe width="960px" height="100%" src="file:///home/tlevine/Documents/fms-symphony/index.html" frameborder="0" allowfullscreen></iframe> -->
+<a href="http://fms.csvsoundsystem.com"><img src="screenshot.png" alt="FMS Symphony" /></a>
+
+
+### Architecture
+<ol>
+    <li>Download fixies from the FMS site, and convert them into CSV.</li>
+    <li>Load into R, and produce the audio and video tracks.</li>
+    <ol>
+        <li>Generate 1877 plots, one per frame.</li>
+        <li>Generate a song.</li>
+    </ol>
+    <li>Combine the frames and the song in a website.</li>
+</ol>
+
+
+### Architecture
+Generate one image per frame.
+
+    for (i in 1:nrow(table2.toplot)) {
+        png(sprintf('slideshow/%d.png', i), width = 1200, height = 600)
+        frame(i)
+        dev.off()
+    }
+
+
+### Frame components
+#### The full video
+<img src="screenshot.png" alt="Screenshot of the video" />
+
+
+### Frame components
+#### The part that we generate in R
+<img src="file:///home/tlevine/Documents/fms-symphony/slideshow/1028.png" alt="A frame from the video, generated in R" />
+
+
+<section data-state="blackout">
+### Chernoff face hack
+[(live coding)](live-code-fms.r)
 </section>
 
-<section>
-<h5>Libraries</h5>
-<pre><code>
-library(plyr)
-library(aplpack) # Cheroff faces
-library(reshape2)
-</code></pre>
-</section>
-
-<section>
-<h5>Munge</h5>
-<pre><code>
-# Load the data
-if (!'table2.raw' %in% ls()) {
-table2.raw <- read.csv('table2-std.csv')
-
-# Fix types
-table2.raw$date <- as.Date(table2.raw$date)
-table2.raw$type <- factor(table2.raw$type)
-table2.raw$item <- factor(table2.raw$item)
-table2.raw$today <- as.numeric(table2.raw$today)
-
-source('data.r')
-fed.rate <- read.csv('fed_rate.csv', stringsAsFactors = F)
-fed.rate$date <- strptime(fed.rate$date, format = '%m/%d/%y')
-}
-table2 <- table2.raw[!table2.raw$is_total,c('date', 'type', 'item', 'today')]
-
-# Select only the items that are present on all days.
-n.days <- length(unique(table2$date))
-table2.pca <- ddply(table2, c('type', 'item'), function(df) {
-if (nrow(df) == n.days) {
-df
-}
-})
-</code></pre>
-</section>
-
-<section>
-<h5>Turn 56 variables into 15 variables.</h5>
-<pre><code>
-# Run PCA
-items <- dcast(table2.pca, date ~ type + item, value.var = 'today')[-1]
-pca <- princomp(items, cor = T)
-pca.stuff <- function() {
-summary(pca)
-plot(pca$sdev ~ I(1:length(pca$sdev)))
-}
-factored <- t(scale(items, center = pca$center, scale = pca$scale) %*% pca$loadings)
-</code></pre>
-</section>
-
-<section>
-<h5>Generate all 1877 faces.</h5>
-<p>This takes some time.</p>
-<pre><code>
-# Make faces
-f.all <- faces(t(factored)[,1:15], plot = F, print.info = F)
-</code></pre>
-</section>
-
-<section data-state="alert">
-<h5><code>aplpack</code> takes too long</h5>
-<p><code>aplpack</code> can only plot <strong>all</strong> of the faces at once.</p>
-<pre><code>library(aplpack)
-png('aplpack_problem.png', width=1200, height=700)
-faces(iris[-5])
-dev.off()</code></pre>
-<img src="aplpack_problem.png" alt="Lots of faces generated by aplpack" />
-</section>
-
-<section data-state="soothe">
-<h5>Plot optimization hack</h5>
-<pre><code>
-# Plot a Chernoff face for a day at an x, y
-face <- function(day.or.days, x, y, ...) {
-# day.or.days is a row index
-
-f <- f.all
-f$xy <- f$faces <- NULL
-
-f$xy <- matrix(f.all$xy[,day.or.days])
-dimnames(f$xy) <- dimnames(f.all$xy)
-f$faces <-f.all$faces[day.or.days]
-
-x.pos <- x + abs(diff(range(table2.toplot$date)) / 20)
-
-plot.faces(f, face.type = 1, x.pos = x.pos, y.pos = y, ...)
-}
-
-</code></pre>
-</section>
-
-<section>
-<h5>Dunno what this does</h5>
-<pre><code>
-# Other plot stuff
-table2.tmp <- ddply(table2.pca, 'date', function(df) { c(error = sd(df$today)) })
-table2.toplot <- join(join(table2.tmp, fms.day[c('date', 'balance')]), fed.rate)
-</code></pre>
-</section>
-
-<section>
-<h5>More munging</h5>
-<pre><code>
-# Remove NAs
-table2.toplot[c(358, 833, 1022, 1393, 1398),] <- table2.toplot[c(358, 833, 1022, 1393, 1398) - 1,]
-
-# Skip the top 40 for rolling.
-table2.toplot <- table2.toplot[-(1:40),]
-</code></pre>
-</section>
-
-<section>
-<h5>Colors</h5>
-<pre><code>
-# Video frame
-bg.of.week <- c(
-Sunday = '#DDDDDD',
-Monday = '#FFDDDD',
-Tuesday = '#DDFFDD',
-Wednesday = '#DDDDFF',
-Thursday = '#DDFFFF',
-Friday = '#FFFFDD',
-Saturday = '#FFDDFF'
-)
-fg.of.week <- c(
-Sunday = '#000000',
-Monday = '#00DDDD',
-Tuesday = '#DDDD00',
-Wednesday = '#DD00DD',
-Thursday = '#DD0000',
-Friday = '#00DD00',
-Saturday = '#0000DD'
-)
-</code></pre>
-</section>
 
 <section>
 <h5>Plot one frame</h5>
