@@ -15,21 +15,25 @@ Image goes here
 
 
 ## Reason 1: Static images are limited
-<img src="minard.png" alt="Minard's map of Napoleon's march" />
+![Minard's map of Napoleon's march](minard.png)
 <!-- http://upload.wikimedia.org/wikipedia/commons/2/29/Minard.png -->
 
 
 ### Senses: Vision
-<img src="eye.jpg" alt="Closeup of the eye of a Red-tailed Hawk (Buteo jamaicensis)." />
+![Closeup of the eye of a Red-tailed Hawk (Buteo jamaicensis).](eye.jpg)
 <!-- http://upload.wikimedia.org/wikipedia/commons/3/3e/Hawk_eye.jpg -->
 
 
 ### Senses: Hearing
-<img src="ear.jpg" alt="A human ear" />
+![A human ear](ear.jpg)
 <!-- http://upload.wikimedia.org/wikipedia/commons/1/1d/Earrr.JPG -->
 
 
 ### Senses: Touch
+
+    navigator.vibrate([1000, 500, 2000])
+
+<!-- <a href="http://www.w3.org/TR/vibration/">HTML vibration API</a> -->
 
 
 ### Senses: Smell
@@ -43,20 +47,15 @@ Image goes here
 
 
 ## Reason 2: Audience
-<img src="html5-logo.png" alt="HTML5 logo" />
+![HTML5 logo](html5-logo.png)
 <!-- http://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/HTML5-logo.svg/500px-HTML5-logo.svg.png -->
-<pre><code>navigator.vibrate([1000, 500, 2000])</code></pre>
-<!-- <a href="http://www.w3.org/TR/vibration/">HTML vibration API</a> -->
 
 
 ## Reason 3: Accessibility
-<img src="open-doors.jpg" alt="&quot;Opening Doors to IT&quot; logo" />
+!["Opening Doors to IT" logo](open-doors.jpg)
 <!-- http://www.section508.gov/images/open_doors_seal-b.jpg -->
-<br />
-<ul>
-    <li><a href="https://www.section508.gov/">Section 508</a></li>
-    <li><a href="http://www.w3.org/TR/WCAG10/">Web Content Accessibility Guidelines</a></li>
-</ul>
+* <a href="https://www.section508.gov/">Section 508</a>
+* <a href="http://www.w3.org/TR/WCAG10/">Web Content Accessibility Guidelines</a>
 
 
 ## Reason 4: Reaching young people
@@ -66,7 +65,7 @@ Image goes here
 
 # R is the best language
 ### for data music videos
-<img src="r.jpg" alt="R logo" />
+![R logo](r.jpg)
 <!-- http://www.r-project.org/Rlogo.jpg -->
 
 
@@ -116,7 +115,7 @@ Generate one page per frame.
 
 
 ### Frame composition
-<img src="annotated-christmas-screenshot.png" alt="Annotated screenshot of the Christmas video" />
+![Annotated screenshot of the Christmas video](annotated-christmas-screenshot.png)
 
 <section data-state="blackout">
 ### Making pretty base R plots
@@ -133,19 +132,15 @@ Generate one page per frame.
 ## Federal spending
 <!-- <iframe width="100%" height="100%" src="http://fms.csvsoundsystem.com" frameborder="0" allowfullscreen></iframe>
 <iframe width="960px" height="100%" src="file:///home/tlevine/Documents/fms-symphony/index.html" frameborder="0" allowfullscreen></iframe> -->
-<a href="http://fms.csvsoundsystem.com"><img src="screenshot.png" alt="FMS Symphony" /></a>
+[![FMS Symphony](screenshot.png)](http://fms.csvsoundsystem.com)
 
 
 ### Architecture
-<ol>
-    <li>Download fixies from the FMS site, and convert them into CSV.</li>
-    <li>Load into R, and produce the audio and video tracks.</li>
-    <ol>
-        <li>Generate 1877 plots, one per frame.</li>
-        <li>Generate a song.</li>
-    </ol>
-    <li>Combine the frames and the song in a website.</li>
-</ol>
+1. Download fixies from the FMS site, and convert them into CSV.
+2. Load into R, and produce the audio and video tracks.
+  * Generate 1877 plots, one per frame.
+  * Generate a song.
+3. Combine the frames and the song in a website.
 
 
 ### Architecture
@@ -160,62 +155,16 @@ Generate one image per frame.
 
 ### Frame components
 #### The full video
-<img src="screenshot.png" alt="Screenshot of the video" />
+![Screenshot of the video](screenshot.png)
 
 
 ### Frame components
 #### The part that we generate in R
-<img src="file:///home/tlevine/Documents/fms-symphony/slideshow/1028.png" alt="A frame from the video, generated in R" />
-
-
-<section data-state="blackout">
-### Chernoff face hack
-[(live coding)](live-code-fms.rive coding)
-</section>
-
-
-### Side note
-<!-- I intentionally repeat this slide. -->
-# Use ggplot
-
-
-
-## Federal spending
-<!-- <iframe width="100%" height="100%" src="http://fms.csvsoundsystem.com" frameborder="0" allowfullscreen></iframe>
-<iframe width="960px" height="100%" src="file:///home/tlevine/Documents/fms-symphony/index.html" frameborder="0" allowfullscreen></iframe> -->
-<a href="http://fms.csvsoundsystem.com"><img src="screenshot.png" alt="FMS Symphony" /></a>
-
-
-### Architecture
-<ol>
-    <li>Download fixies from the FMS site, and convert them into CSV.</li>
-    <li>Load into R, and produce the audio and video tracks.</li>
-    <ol>
-        <li>Generate 1877 plots, one per frame.</li>
-        <li>Generate a song.</li>
-    </ol>
-    <li>Combine the frames and the song in a website.</li>
-</ol>
-
-
-### Architecture
-Generate one image per frame.
-
-    for (i in 1:nrow(table2.toplot)) {
-        png(sprintf('slideshow/%d.png', i), width = 1200, height = 600)
-        frame(i)
-        dev.off()
-    }
+![A frame from the video, generated in R](1028.png)
 
 
 ### Frame components
-#### The full video
-<img src="screenshot.png" alt="Screenshot of the video" />
-
-
-### Frame components
-#### The part that we generate in R
-<img src="file:///home/tlevine/Documents/fms-symphony/slideshow/1028.png" alt="A frame from the video, generated in R" />
+![Annotated screenshot of the video](annotated-screenshot.png)
 
 
 <section data-state="blackout">
@@ -224,223 +173,13 @@ Generate one image per frame.
 </section>
 
 
-<section>
-<h5>Plot one frame</h5>
-<pre><code>
-frame <- function(i) {
-if (i <= 2) {
-return
-}
-day.of.week.a <- strftime(table2.toplot[i,'date'], format = '%A')
-bg <- bg.of.week[day.of.week.a][[1]]
-fg <- fg.of.week[day.of.week.a][[1]]
-par(
-bg = bg
-)
-plot(
-table2.toplot[1:i,'balance'] ~ table2.toplot[1:i,'date'],
-type = 'n',
-xlim = range(table2.toplot$date),
-ylim = c(-2e5, 7e5), #range(table2.toplot$balance),
-xlab = '', #Date
-ylab = 'Cash in the bank (billions)', main = '', #'FMS Soundsystem',
-axes = F, col = 4 # so we notice errors
-)
-abline(h = 0, col = fg)
-
-# Rate
-#range(table2.toplot$balance)
-
-# Balance
-polygon(
-c(table2.toplot[1:i,'date'], table2.toplot[i:1,'date']),
-c(table2.toplot[1:i,'balance'], table2.toplot[i:1,'balance']) + c(table2.toplot[1:i,'error'], - table2.toplot[i:1,'error']),
-col = 1
-)
-
-# Under balance
-rect(
-xright =  min(table2.toplot$date),
-ybottom = mean(range(table2.toplot$balance)) * 0.95,
-xleft =   weighted.mean(range(table2.toplot$date), c(18, 3)),
-ytop    = mean(range(table2.toplot$balance)) * 1.15,
-col = 1
-)
-text(
-x = min(table2.toplot$date),
-y = mean(range(table2.toplot$balance)) * c(1.1, 1),
-labels = c(
-'Balance',
-sub('\\$-', '-$', paste('$', as.character(round(table2.toplot[i,'balance'] / 1000)), ' billion', sep = ''))
-),
-pos = 4, font = 2:1, col = fg
-)
-
-# Under interest rate
-rect(
-xleft =   weighted.mean(range(table2.toplot$date), c(3, 18)),
-ybottom = mean(range(table2.toplot$balance)) * 0.95,
-xright =  max(table2.toplot$date),
-ytop    = mean(range(table2.toplot$balance)) * 1.15,
-col = 1
-)
-text(
-x = max(table2.toplot$date),
-y = mean(range(table2.toplot$balance)) * c(1.1, 1),
-labels = c(
-'Interest rate',
-sub('\\$-', '-$', paste('$', as.character(round(table2.toplot[i,'balance'] / 1000)), ' billion', sep = ''))
-),
-pos = 2, font = 2:1, col = fg
-)
-
-# Under main
-rect(
-xleft   = weighted.mean(range(table2.toplot$date), c(2, 9)),
-ybottom = weighted.mean(range(table2.toplot$balance), c(2, 15)),
-xright  = max(table2.toplot$date),
-ytop    = max(table2.toplot$balance),
-col = 1
-)
-text(
-x = weighted.mean(range(table2.toplot$date), c(1, 9)),
-y = c(
-weighted.mean(range(table2.toplot$balance), c(1, 15)),
-weighted.mean(range(table2.toplot$balance), c(2, 15))
-),
-labels = c(
-'FMS Soundsystem',
-strftime(table2.toplot[i,'date'], format = '%B %Y')
-),
-col = fg, pos = 3, font = 2:1
-)
-
-ticks <- seq(-2e5, 6e5, 1e5)
-axis(2, at = ticks, labels = round(ticks / 1000))
-face(i,
-x = table2.toplot[i,'date'],
-y = table2.toplot[i,'balance'],
-height = abs(diff(range(table2.toplot$balance))) / 5,
-width = abs(diff(range(table2.toplot$date))) / 10,
-labels = ''
-)
-
-par(new = T)
-plot(
-table2.toplot[1:i,'rate'] ~ table2.toplot[1:i,'date'],
-axes = F, xlab = '', ylab = '', type = 'l', lty = 2,
-xlim = range(table2.toplot$date), ylim = c(-2, max(table2.toplot$rate))
-)
-mtext("Federal interest rate", side=4, line=3)
-axis(4, at = 0:5, labels = paste(0:5, '%', sep = ''), lty = 2)
-}
-</code></pre>
+<section data-state="blackout">
+### Website
+[(live coding)](live-code-fms.html)
 </section>
 
-<section>
-<h5>Plot one frame: How to use</h5>
-<pre><code>
-# Plot the 30th frame.
-frame(30)
-</code></pre>
+
+
+<section data-state="blackout">
+# Brian's turn
 </section>
-
-<section>
-<h5>Frame components</h5>
-<img src="annotated-screenshot.png" alt="Annotated screenshot of the video" />
-</section>
-
-<section>
-<h5><code>type="n"</code></h5>
-<pre><code>
-plot(
-table2.toplot[1:i,'balance'] ~ table2.toplot[1:i,'date'],
-type = 'n',
-xlim = range(table2.toplot$date),
-ylim = c(-2e5, 7e5), #range(table2.toplot$balance),
-xlab = '', #Date
-ylab = 'Cash in the bank (billions)', main = '', #'FMS Soundsystem',
-axes = F, col = 4 # so we notice errors
-)
-</code></pre>
-</section>
-
-<section>
-<h5>Confidence interval with <code>polygon</code></h5>
-<pre><code>
-# Balance
-polygon(
-c(table2.toplot[1:i,'date'], table2.toplot[i:1,'date']),
-c(table2.toplot[1:i,'balance'], table2.toplot[i:1,'balance']) + c(table2.toplot[1:i,'error'], - table2.toplot[i:1,'error']),
-col = 1
-)
-</code></pre>
-</section>
-
-<section>
-<h5>More arguments to <code>plot</code></h5>
-<pre><code>
-par(new = T)
-plot(
-table2.toplot[1:i,'rate'] ~ table2.toplot[1:i,'date'],
-axes = F, xlab = '', ylab = '', type = 'l', lty = 2,
-xlim = range(table2.toplot$date), ylim = c(-2, max(table2.toplot$rate))
-)
-mtext("Federal interest rate", side=4, line=3)
-axis(4, at = 0:5, labels = paste(0:5, '%', sep = ''), lty = 2)
-</code></pre>
-</section>
-
-<section>
-<h5>Frame components again</h5>
-<img src="annotated-screenshot.png" alt="Annotated screenshot of the video" />
-</section>
-
-<section>
-<h5>Things to remember</h5>
-<!-- I intentionally repeat this slide. -->
-<ul>
-    <li>Base R graphics are powerful.</li>
-    <li><code>locator</code> is helpful.</li>
-    <li><strong>Use ggplot</strong> if you don't need this level of control.</li>
-</ul>
-</section>
-
-<section>
-<h2>CSV Soundsystem library</h2>
-</section>
-</div>
-</div>
-
-<script src="lib/js/head.min.js"></script>
-<script src="js/reveal.min.js"></script>
-
-<script>
-
-// Full list of configuration options available here:
-// https://github.com/hakimel/reveal.js#configuration
-Reveal.initialize({
-controls: true,
-progress: true,
-history: true,
-center: true,
-
-theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
-
-// Optional libraries used to extend on reveal.js
-dependencies: [
-{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
-]
-});
-
-</script>
-
-</body>
-</html>
