@@ -349,7 +349,7 @@ dev.off()</code></pre>
                     <pre><code>
 main.plots <- function() {
     for (i in 1:nrow(table2.toplot)) {
-         png(sprintf('slideshow/%d.png', i), width = 1200, height = 600) 
+         png(sprintf('slideshow/%d.png', i), width = 1200, height = 600)
          frame(i)
          dev.off()
     }
