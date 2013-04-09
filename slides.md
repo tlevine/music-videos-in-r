@@ -1,8 +1,8 @@
 # Music Videos in R
 ### Presenting high-dimensional data in a web browser
-<small><a href="http://thomaslevine.com">Thomas Levine</a></small>
+[Brian Abelson](http://brianabelson.com), Data Scientologist, and [Thomas Levine](http://thomaslevine.com), Data Superhero
 
-<small><a href="http://csvsoundsystem.com">CSV Soundsystem</a></small>
+<a href="http://csvsoundsystem.com">CSV Soundsystem</a>
 
 
 
@@ -70,14 +70,16 @@
 
 
 ## Reason 1: Vector graphics
-A plot goes here.
+![Iris](iris.png)
 
 
-## Reason 2: ddr
-Sound waves go here.
+## Reason 2: ddr library
+
+    DDR ascii art XXX
 
 
 ## Reason 3: Data
+
     str(iris)
     'data.frame':   150 obs. of  5 variables:
     $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
@@ -112,6 +114,8 @@ Generate one page per frame.
     giftframe(0,day=12,daylabel=F)
 
     dev.off()
+
+And then I made a screencast with `ffmpeg`.
 
 
 ### Frame composition

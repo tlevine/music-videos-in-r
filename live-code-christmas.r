@@ -78,7 +78,9 @@ plot(
 
 plot(iris$Sepal.Length ~ iris$Sepal.Width)
 
+plot(iris$Sepal.Length ~ iris$Sepal.Width, bty = 'n')
+
 plot(iris$Sepal.Length ~ iris$Sepal.Width, axes=F)
-axis(1)
+axis(1, at = 2:4, labels = c('a', 'b', 'c'))
 axis(2)
 
