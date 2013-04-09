@@ -13,58 +13,40 @@
 
 
 
-# Data music videos are the answer.
+## Data music videos are the answer.
+# Why?
 
 
 ## Reason 1: Static images are limited
 ![Minard's map of Napoleon's march](minard.png)
 <!-- http://upload.wikimedia.org/wikipedia/commons/2/29/Minard.png -->
 
+
+### Multisensory experiences are the future.
 ![Artichoke pizza](artichoke.jpg)
 <!-- http://www.flickr.com/photos/igorschwarzmann/4423705330/ -->
-
-
-### Senses: Vision
-![Closeup of the eye of a Red-tailed Hawk (Buteo jamaicensis).](eye.jpg)
-<!-- http://upload.wikimedia.org/wikipedia/commons/3/3e/Hawk_eye.jpg -->
-
-
-### Senses: Hearing
-![A human ear](ear.jpg)
-<!-- http://upload.wikimedia.org/wikipedia/commons/1/1d/Earrr.JPG -->
-
-
-### Senses: Touch
-
-    navigator.vibrate([1000, 500, 2000])
-
-<!-- <a href="http://www.w3.org/TR/vibration/">HTML vibration API</a> -->
-
-
-### Senses: Smell
-![Olfaction](415px-Early_Olfactory_System.svg.png)
-<!-- http://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Early_Olfactory_System.svg/415px-Early_Olfactory_System.svg.png -->
-
-
-### Senses: Taste
-![Taste](709px-Taste_bud.svg.png)
-<!-- http://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Taste_bud.svg/709px-Taste_bud.svg.png -->
 
 
 ## Reason 2: Audience
 ![HTML5 logo](html5-logo.png)
 <!-- http://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/HTML5-logo.svg/500px-HTML5-logo.svg.png -->
 
+* Vision
+* Hearing
+* Touch
+
 
 ## Reason 3: Accessibility
 !["Opening Doors to IT" logo](open-doors.jpg)
-<!-- http://www.section508.gov/images/open_doors_seal-b.jpg -->
-* <a href="https://www.section508.gov/">Section 508</a>
-* <a href="http://www.w3.org/TR/WCAG10/">Web Content Accessibility Guidelines</a>
+<!-- http://www.section508.gov/images/open_doors_seal-b.jpg
+
+* [Section 508](https://www.section508.gov/)
+* [Web Content Accessibility Guidelines](http://www.w3.org/TR/WCAG10/
+ -->
 
 
 ## Reason 4: Reaching young people
-<iframe width="560" height="315" src="http://www.youtube.com/embed/JwuEnyV1Cb0" frameborder="0" allowfullscreen></iframe>
+[![Government representatives](dubstep-preview.png)](http://www.youtube.com/watch?v=JwuEnyV1Cb0)
 
 
 
@@ -79,8 +61,10 @@
 
 
 ## Reason 2: ddr library
-
-    DDR ascii art XXX
+        __     __       
+    .--|  |.--|  |.----.
+    |  _  ||  _  ||   _|
+    |_____||_____||__|
 
 
 ## Reason 3: Data
