@@ -1,8 +1,10 @@
 # Music Videos in R
 ### Presenting high-dimensional data in a web browser
-[Brian Abelson](http://brianabelson.com), Data Scientologist, and [Thomas Levine](http://thomaslevine.com), Data Superhero
+[Brian Abelson](http://brianabelson.com), Data Scientologist
 
-<a href="http://csvsoundsystem.com">CSV Soundsystem</a>
+[Thomas Levine](http://thomaslevine.com), Data Superhero
+
+[CSV Soundsystem](http://csvsoundsystem.com)
 
 
 
@@ -17,6 +19,9 @@
 ## Reason 1: Static images are limited
 ![Minard's map of Napoleon's march](minard.png)
 <!-- http://upload.wikimedia.org/wikipedia/commons/2/29/Minard.png -->
+
+![Artichoke pizza](artichoke.jpg)
+<!-- http://www.flickr.com/photos/igorschwarzmann/4423705330/ -->
 
 
 ### Senses: Vision
