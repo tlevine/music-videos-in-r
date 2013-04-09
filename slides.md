@@ -27,6 +27,10 @@
 <!-- http://www.flickr.com/photos/igorschwarzmann/4423705330/ -->
 
 
+### Dynamic experiences increase dimensionality
+[![complicated plot](4l-FixedScale-NoMuProf2-preview.png)](4l-FixedScale-NoMuProf2.gif)
+
+
 ## Reason 2: Audience
 ![HTML5 logo](html5-logo.png)
 <!-- http://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/HTML5-logo.svg/500px-HTML5-logo.svg.png -->
